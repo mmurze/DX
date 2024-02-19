@@ -1,0 +1,10 @@
+﻿  compilation object save succeeded; see C:\more\University\DX\lab_2\x64\Release\VertexColor_PS.cso
+  compilation object save succeeded; see C:\more\University\DX\lab_2\x64\Release\VertexColor_VS.cso
+  lab_2.cpp
+  Renderer.cpp
+  Создание кода
+  251 of 255 functions (98.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  lab_2.vcxproj -> C:\more\University\DX\lab_2\x64\Release\lab_2.exe

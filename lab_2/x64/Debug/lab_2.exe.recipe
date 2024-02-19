@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\more\University\DX\lab_2\x64\Debug\lab_2.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\more\University\DX\lab_2\x64\Debug\VertexColor_PS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\more\University\DX\lab_2\x64\Debug\VertexColor_VS.cso</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
