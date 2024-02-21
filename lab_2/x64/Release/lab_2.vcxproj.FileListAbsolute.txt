@@ -1,3 +1,0 @@
-C:\Users\irana\OneDrive\Документы\GitHub\DX\lab_2\x64\Release\lab_2.exe
-C:\Users\irana\OneDrive\Документы\GitHub\lab_2\x64\Release\lab_2.exe
-C:\more\University\DX\lab_2\x64\Release\lab_2.exe
