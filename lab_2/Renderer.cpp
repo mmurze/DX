@@ -150,10 +150,10 @@ HRESULT Renderer::InitShaders() {
 	}
 	ID3DBlob* pVertexShaderCode = NULL;
 	if (SUCCEEDED(result)) {
-		result = CompileShader(L"VertexColor_VS.hlsl", (ID3D11DeviceChild**)&m_pVertexShader, "vs", &pVertexShaderCode);
+		result = CompileShader(L"VertexColor_VS.cso", (ID3D11DeviceChild**)&m_pVertexShader, "vs", &pVertexShaderCode);
 	}
 	if (SUCCEEDED(result)) {
-		result = CompileShader(L"VertexColor_PS.hlsl", (ID3D11DeviceChild**)&m_pPixelShader, "ps");
+		result = CompileShader(L"VertexColor_PS.cso", (ID3D11DeviceChild**)&m_pPixelShader, "ps");
 	}
 
 	static const D3D11_INPUT_ELEMENT_DESC InputDesc[] = {
