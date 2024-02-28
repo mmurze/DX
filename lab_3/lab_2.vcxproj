@@ -127,8 +127,8 @@
       <AdditionalIncludeDirectories>C:\more\University\DX\lab_3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </FxCompile>
     <PostBuildEvent>
-      <Command>copy "$(ProjectDir)VertexColor_PS.cso" "$(OutDir)VertexColor_PS.cso"
-copy "$(ProjectDir)VertexColor_VS.cso" "$(OutDir)VertexColor_VS.cso"</Command>
+      <Command>copy "$(ProjectDir)VertexColor_PS.hlsl" "$(OutDir)VertexColor_PS.hlsl"
+copy "$(ProjectDir)VertexColor_VS.hlsl" "$(OutDir)VertexColor_VS.hlsl"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -153,8 +153,8 @@ copy "$(ProjectDir)VertexColor_VS.cso" "$(OutDir)VertexColor_VS.cso"</Command>
       <AdditionalIncludeDirectories>C:\more\University\DX\lab_3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </FxCompile>
     <PostBuildEvent>
-      <Command>copy "$(ProjectDir)VertexColor_PS.cso" "$(OutDir)VertexColor_PS.cso"
-copy "$(ProjectDir)VertexColor_VS.cso" "$(OutDir)VertexColor_VS.cso"</Command>
+      <Command>copy "$(ProjectDir)VertexColor_PS.hlsl" "$(OutDir)VertexColor_PS.hlsl"
+copy "$(ProjectDir)VertexColor_VS.hlsl" "$(OutDir)VertexColor_VS.hlsl"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -189,10 +189,6 @@ copy "$(ProjectDir)VertexColor_VS.cso" "$(OutDir)VertexColor_VS.cso"</Command>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">vs</EntryPointName>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">vs</EntryPointName>
     </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="VertexColor_PS.cso" />
-    <None Include="VertexColor_VS.cso" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -62,8 +62,4 @@
     <FxCompile Include="VertexColor_PS.hlsl" />
     <FxCompile Include="VertexColor_VS.hlsl" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="VertexColor_PS.cso" />
-    <None Include="VertexColor_VS.cso" />
-  </ItemGroup>
 </Project>
