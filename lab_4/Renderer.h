@@ -5,7 +5,7 @@
 #include <vector>
 #include <locale>
 #include <codecvt>
-#include <d3dcompiler.h>
+#include "winerror.h"
 #include "SceneManager.h"
 #include "LoadDDS.h"
 

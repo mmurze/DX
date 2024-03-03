@@ -1,5 +1,6 @@
 ﻿#include "Renderer.h"
-
+#include "winerror.h"
+#include <winerror.h>
 template <class DirectXClass>
 void SafeRelease(DirectXClass* pointer)
 {

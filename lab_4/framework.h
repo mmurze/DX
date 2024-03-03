@@ -14,10 +14,22 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>
+#include <memory>
 #include <tchar.h>
 #include <assert.h>
 #include <thread>
-#include<iostream>
+#include <iostream>
+#include <algorithm>
+#include <stdexcept>
+#include <dinput.h>
+#include <directxmath.h>
+#include <chrono>
+#include <cmath>
+#include <cassert>
+#include <winerror.h>
+#include "winerror.h"
+#include <assert.h>
+#include "assert.h"
 
 #include <corecrt_math_defines.h>
 #include <dxgi.h>
