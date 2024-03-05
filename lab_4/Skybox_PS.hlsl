@@ -8,5 +8,5 @@ struct VSOutput
 };
 
 float4 ps(VSOutput pixel) : SV_Target0 {
-    return float4(colorTexture.Sample(colorSampler, pixel.localPos).xyz, 1.0);
+    return float4(colorTexture.Sample(colorSampler, pixel.localPos).z, (colorTexture.Sample(colorSampler, pixel.localPos).x + colorTexture.Sample(colorSampler, pixel.localPos).y)/2, colorTexture.Sample(colorSampler, pixel.localPos).y, 1.0);
 }
