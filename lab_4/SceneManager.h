@@ -8,6 +8,8 @@ class SceneManager
     DirectX::XMMATRIX m_cameraYRotation;
 
     double m_animTime;
+    float m_direction;
+    bool m_s;
     bool m_isPlay;
     bool m_isTrapped;
     float m_zoomScene;

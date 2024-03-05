@@ -21,7 +21,7 @@
 #include <iostream>
 #include <algorithm>
 #include <stdexcept>
-#include <dinput.h>
+
 #include <directxmath.h>
 #include <chrono>
 #include <cmath>

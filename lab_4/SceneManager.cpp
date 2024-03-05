@@ -1,10 +1,12 @@
 #include "SceneManager.h"
 
 SceneManager::SceneManager() {
-    m_animTime = 0.0;
+    m_animTime = 0;
     m_isPlay = true;
     m_isTrapped = false;
     m_zoomScene = 14.0f;
+    m_direction = 1;
+    m_s = false;
     m_cameraXRotation = DirectX::XMMatrixIdentity();
     m_cameraYRotation = DirectX::XMMatrixIdentity();
     Update(0.0);
@@ -15,9 +17,13 @@ void SceneManager::Update(double deltaTime)
     if (m_isPlay)
     {
         m_animTime += deltaTime * 3 * M_PI * 0.25;
+        std::cout << "Age: " << m_animTime << std::endl;
     }
-    m_modelTransform = DirectX::XMMatrixRotationAxis({ 0, 1, 0 }, -static_cast<float>(m_animTime));
-    m_modelTransform *= DirectX::XMMatrixTranslation(0.0f, (1.0f + sinf(-static_cast<float>(m_animTime))) / 4, 0.0f);
+    if (m_s) {
+        m_animTime += 0.2;
+    }
+    m_modelTransform = DirectX::XMMatrixRotationAxis({ 0, 1, 0 }, m_direction*static_cast<float>(m_animTime));
+    m_modelTransform *= DirectX::XMMatrixTranslation(0.0f, (1.0f + sinf(m_direction*static_cast<float>(m_animTime))) / 10, 0.0f);
 
     m_cameraTransform = DirectX::XMMatrixTranslation(0, 0, -m_zoomScene);
     m_cameraTransform *= m_cameraYRotation;
@@ -38,6 +44,8 @@ void SceneManager::OnMouseMove(WPARAM wParam, LPARAM lParam) {
 
 void SceneManager::OnLButtonDown(WPARAM wParam, LPARAM lParam) {
     m_isTrapped = true;
+    m_direction *= -1;
+    m_s = !m_s;
     m_trapLast.x = m_trapStart.x = GET_X_LPARAM(lParam);
     m_trapLast.y = m_trapStart.y = GET_Y_LPARAM(lParam);
 }
