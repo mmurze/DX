@@ -19,6 +19,9 @@ struct TextureVertex {
 	float u, v;
 };
 
+struct ObjectColor{
+	float r, g, b, w;
+};
 
 struct SceneBuffer {
 	DirectX::XMMATRIX model;
@@ -459,6 +462,22 @@ HRESULT Renderer::InitShaders() {
 		}
 	}
 	{
+		ObjectColor objColor = { 0.7f, 1.0f, 0.5f, 0.6f };
+		D3D11_BUFFER_DESC desc = {};
+		desc.ByteWidth = sizeof(ObjectColor);
+		desc.Usage = D3D11_USAGE_DEFAULT;
+		desc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		desc.CPUAccessFlags = 0;
+		desc.MiscFlags = 0;
+		desc.StructureByteStride = 0;
+		D3D11_SUBRESOURCE_DATA data = { &objColor, 0, 0 };
+
+		result = m_pDevice->CreateBuffer(&desc, &data, &m_pColorBuffer);
+		if (SUCCEEDED(result)) {
+			result = SetResourceName(m_pColorBuffer, "colorBuffer");
+		}
+	}
+	{
 		D3D11_BUFFER_DESC desc = {};
 		desc.ByteWidth = sizeof(Indices);
 		desc.Usage = D3D11_USAGE_IMMUTABLE;
@@ -658,6 +677,7 @@ void Renderer::Clean() {
 	SafeRelease(m_pSphereVertexBuffer);
 	SafeRelease(m_pCubeIndexBuffer);
 	SafeRelease(m_pCubeVertexBuffer);
+	SafeRelease(m_pColorBuffer);
 
 	SafeRelease(m_pTransBlendState);
 	SafeRelease(m_pDepthStateRead);
@@ -798,10 +818,10 @@ bool Renderer::Render()
 	{
 		m_pDeviceContext->OMSetDepthStencilState(m_pDepthStateRead, 0);
 		m_pDeviceContext->OMSetBlendState(m_pTransBlendState, nullptr, 0xFFFFFFFF);
-		m_pDeviceContext->IASetInputLayout(m_pSimpleTransTextureInputLayout);
 		m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		m_pDeviceContext->VSSetShader(m_pSimpleTransTextureVertexShader, nullptr, 0);
 		m_pDeviceContext->PSSetShader(m_pSimpleTransTexturePixelShader, nullptr, 0);
+		m_pDeviceContext->PSSetConstantBuffers(0, 1, &m_pColorBuffer);
 
 		m_pDeviceContext->VSSetConstantBuffers(0, 1, &m_pViewBuffer);
 		m_pDeviceContext->VSSetConstantBuffers(1, 1, &m_pSceneBuffer);
@@ -811,9 +831,9 @@ bool Renderer::Render()
 		m_pDeviceContext->PSSetSamplers(0, 1, samplers);
 
 		std::vector<SceneBuffer> sceneBuffer;
-		sceneBuffer.push_back({ DirectX::XMMatrixTranslation(4.5f, 3.0f, 0.7f), { 0.7f, 1.0f, 0.5f, 0.6f } });
-		sceneBuffer.push_back({ DirectX::XMMatrixTranslation(-2.5f, 1.0f, 1.7f), { 0.5f, 0.5f, 0.5f, 0.6f } });
-		sceneBuffer.push_back({ DirectX::XMMatrixTranslation(0.5f, 3.0f, -0.7f), { 0.4f, 0.3f, 0.2f, 0.6f } });
+		sceneBuffer.push_back({ DirectX::XMMatrixTranslation(4.5f, 3.0f, 0.7f) });
+		sceneBuffer.push_back({ DirectX::XMMatrixTranslation(-2.5f, 1.0f, 1.7f) });
+		sceneBuffer.push_back({ DirectX::XMMatrixTranslation(0.5f, 3.0f, -0.7f) });
 
 		std::vector<std::pair<int, float>> cameraDist;
 		for (int i = 0; i < sceneBuffer.size(); i++)
@@ -840,6 +860,10 @@ bool Renderer::Render()
 			m_pDeviceContext->UpdateSubresource(m_pSceneBuffer, 0, nullptr, &sceneBuffer[cameraDist[i].first], 0, 0);
 			m_pDeviceContext->DrawIndexed(indexCountCubes, 0, 0);
 		}
+
+		ID3D11Buffer* colorBuffer;
+
+
 	}
 
 	result = m_pSwapChain->Present(0, 0);

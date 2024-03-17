@@ -45,6 +45,7 @@ private:
     ID3D11Buffer* m_pSphereIndexBuffer = NULL;
     ID3D11Buffer* m_pCubeVertexBuffer = NULL;
     ID3D11Buffer* m_pCubeIndexBuffer = NULL;
+    ID3D11Buffer* m_pColorBuffer = NULL;
 
     ID3D11Buffer* m_pSceneBuffer = NULL;
     ID3D11Buffer* m_pViewBuffer = NULL;
